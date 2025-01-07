@@ -15,13 +15,14 @@ function AddBookRow(e) {
     let colAuthor = document.createElement("td");
     let colIsbn = document.createElement("td");
     let colDelete = document.createElement("td");
-    let cancelIcon = document.createElement("i");
+    let deleteButton = document.createElement("button");
 
-    colTitle.innerHTML = BookTitle.value;
-    colAuthor.innerHTML = BookAuthor.value;
-    colIsbn.innerHTML = BookIsbn.value;
-    cancelIcon.classList = "ri-close-circle-fill delete";
-    colDelete.append(cancelIcon);
+    colTitle.textContent = BookTitle.value;
+    colAuthor.textContent = BookAuthor.value;
+    colIsbn.textContent = BookIsbn.value;
+    deleteButton.className = "delete";
+    deleteButton.textContent = "Delete";
+    colDelete.append(deleteButton);
 
     row.append(colTitle, colAuthor, colIsbn, colDelete);
     tableBody.append(row);
@@ -29,7 +30,7 @@ function AddBookRow(e) {
     BookAuthor.value = "";
     BookIsbn.value = "";
 
-    cancelIcon.addEventListener("click", () => {
+    deleteButton.addEventListener("click", () => {
       tableBody.removeChild(row);
     });
   }
